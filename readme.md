@@ -1,7 +1,7 @@
 # Личный проект «Типотека» [![Build status][travis-image]][travis-url]
 
-* Студент: [Фёдор Громов](https://up.htmlacademy.ru/nodejs/3/user/338401).
-* Наставник: `Неизвестно`.
+- Студент: [Фёдор Громов](https://up.htmlacademy.ru/nodejs/3/user/338401).
+- Наставник: `Алексей Балесный`.
 
 ---
 
