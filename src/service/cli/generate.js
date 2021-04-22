@@ -2,6 +2,7 @@
 
 const {FILE_NAME, FILE_SENTENCES_PATH, FILE_TITLES_PATH, FILE_CATEGORIES_PATH, DEFAULT_COUNT} = require(`../../constants`);
 const {getRandomInt, shuffle} = require(`../../utils`);
+const chalk = require(`chalk`);
 const fs = require(`fs`).promises;
 
 const readContent = async (filePath) => {
@@ -9,7 +10,7 @@ const readContent = async (filePath) => {
     const content = await fs.readFile(filePath, `utf8`);
     return content.trim().split(`\n`);
   } catch (err) {
-    console.error(err);
+    console.error(chalk.red(err));
     return [];
   }
 };
@@ -37,9 +38,9 @@ module.exports = {
 
     try {
       await fs.writeFile(FILE_NAME, content);
-      console.log(`Operation success. File created.`);
+      console.log(chalk.green(`Operation success. File created.`));
     } catch (err) {
-      console.error(`Can't write data to file...`);
+      console.error(chalk.red(`Can't write data to file...`));
     }
   }
 };
