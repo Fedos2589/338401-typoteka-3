@@ -10,7 +10,7 @@ const [userCommand, count] = userArguments;
 if (userArguments.length === 0 || !Cli[userCommand]) {
   Cli[DEFAULT_COMMAND].run();
   process.exit(ExitCode.success);
-} else if (count > CountRestrict.MAX) {
+} else if (Cli[userCommand] === `--generate` && count > CountRestrict.MAX) {
   console.log(chalk.red(MAX_COUNT_ERROR_TEXT));
   process.exit(ExitCode.success);
 } else {
