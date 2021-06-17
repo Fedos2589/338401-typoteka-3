@@ -1,0 +1,17 @@
+extends layout.pug
+//- тут другой хэдер, добавить классы для main
+block main 
+  section.main-page__publication.publication
+    h1.publication__title Комментарии
+    ul.publication__list
+      each comment in comments
+        - const { text, avatar, user, strong } = comment
+        li.publication__list-item
+          .publication__header
+            img.publication__list-image(src=`static/${avatar}` width='20' height='20' alt='Аватар пользователя')
+            b.publication__list-name #{user}
+            time.publication__item-time(datetime='2019-03-21T20:33') 21.03.2019, 20:33
+          a.publication__item-text(href='#') #{text}
+          p.publication__text-strong #{strong}
+          button.publication__button.button.button--close-item(type='button')
+            span.visually-hidden Закрыть строку списка
