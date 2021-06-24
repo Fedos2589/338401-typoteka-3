@@ -1,4 +1,5 @@
 extends layout.pug
+include ./mixins
 
 block main
   h1.visually-hidden Главная страница личного блога Типотека
@@ -7,10 +8,7 @@ block main
     h2.visually-hidden Список тем
     ul.themes
       each theme in themes
-        - const { title, sup } = theme
-        li.themes__item
-          a.themes__item-link(href="#") #{title}
-            sup #{sup}
+        +theme(theme)
   .main-page__section-flex
     section.main-page__hot.hot
       h2.hot__name Самое обсуждаемое
@@ -29,7 +27,7 @@ block main
         each comment in comments
           - const { text, avatar, user } = comment
           li.last__list-item
-            img.last__list-image(src=`static/${avatar}` width='20' height='20' alt='Аватар пользователя')
+            img.last__list-image(src=`/static/${avatar}` width='20' height='20' alt='Аватар пользователя')
             b.last__list-name #{user}
             a.last__list-link(href='#') #{text}
 
@@ -37,22 +35,7 @@ block main
     h2.visually-hidden Список превью статей
     ul.preview__list
       each preview in previews
-        - const { breadcrumbs, img, srcset, alt, datetime, heading, text } = preview
-        li.preview__item
-          ul.preview__breadcrumbs
-            each breadcrumb in breadcrumbs
-              li.preview__breadcrumbs-item
-                a.preview__breadcrumbs-link(href='#') #{breadcrumb}
-          if img
-            .preview__background
-              img.preview__background-image(src=`static/${img}` width='460' height='240' srcset=`${srcset}` alt=`${alt}`)
-          time.preview__time(datetime=`${datetime}`) #{datetimeFormatted}
-          h3.preview__name
-            a.preview__name-link(href='#') #{heading}
-          p.preview__text #{text}
-          a.preview__comment(href='#') Комментарии
-            span.preview__cloud
-            b.preview__comment-count 12
+        +previewItem(preview)
 
   .preview__toggle-wrapper
     ul.preview__pagination.pagination
