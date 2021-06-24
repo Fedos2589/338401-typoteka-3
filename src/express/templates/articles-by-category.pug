@@ -1,4 +1,5 @@
 extends layout.pug
+include ./mixins
 
 block main
   h1 Бизнес
@@ -6,27 +7,9 @@ block main
     h2.visually-hidden Список тем
     ul.themes
       each theme in themes
-        - const { title, sup } = theme
-        li.themes__item
-          a.themes__item-link(href="#") #{title}
-            sup #{sup}
+        +theme(theme)
   section.articles-category__list.preview
     h2.visually-hidden Список превью статей
     ul.preview__list
       each preview in previews
-        - const { breadcrumbs, img, srcset, alt, datetime, heading, text } = preview
-        li.preview__item
-          ul.preview__breadcrumbs
-            each breadcrumb in breadcrumbs
-              li.preview__breadcrumbs-item
-                a.preview__breadcrumbs-link(href='#') #{breadcrumb}
-          if img
-            .preview__background
-              img.preview__background-image(src=`static/${img}` width='460' height='240' srcset=`${srcset}` alt=`${alt}`)
-          time.preview__time(datetime=`${datetime}`) #{datetimeFormatted}
-          h3.preview__name
-            a.preview__name-link(href='#') #{heading}
-          p.preview__text #{text}
-          a.preview__comment(href='#') Комментарии
-            span.preview__cloud
-            b.preview__comment-count 12
+        +previewItem(preview)

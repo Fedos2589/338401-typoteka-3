@@ -5,16 +5,16 @@ html(lang='ru')
     meta(name='description' content='Личный блог Типотека')
     meta(http-equiv='X-UA-Compatible' content='ie=edge')
     title Типотека
-    link(rel='preload' href='static/fonts/Inter-Regular.woff2' as='font' crossorigin='anonymous')
-    link(rel='preload' href='static/fonts/Inter-Medium.woff2' as='font' crossorigin='anonymous')
-    link(rel='preload' href='static/fonts/SFProDisplay-Regular.woff2' as='font' crossorigin='anonymous')
-    link(rel='stylesheet' href='static/css/style.min.css')
+    link(rel='preload' href='/static/fonts/Inter-Regular.woff2' as='font' crossorigin='anonymous')
+    link(rel='preload' href='/static/fonts/Inter-Medium.woff2' as='font' crossorigin='anonymous')
+    link(rel='preload' href='/static/fonts/SFProDisplay-Regular.woff2' as='font' crossorigin='anonymous')
+    link(rel='stylesheet' href='/static/css/style.min.css')
   body
     //- wrapper--nobackground wrapper-color
     div.wrapper
       include header.pug
-      main
+      main.main-page
         block main
   include footer.pug
-  script(src='static/js/vendor.js')
-  script(src='static/js/main.js')
+  script(src='/static/js/vendor.js')
+  script(src='/static/js/main.js')

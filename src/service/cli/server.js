@@ -1,61 +1,37 @@
 'use strict';
 
-const chalk = require(`chalk`);
-const http = require(`http`);
+const express = require(`express`);
 const fs = require(`fs`).promises;
-const {DEFAULT_PORT, HttpCode, FILE_NAME, NOT_FOUND} = require(`../../constants`);
+const {DEFAULT_PORT, FILE_NAME} = require(`../../constants`);
 
-const sendResponse = (res, statusCode, message) => {
-  const template = `
-    <!Doctype html>
-      <html lang="ru">
-      <head>
-        <title>With love from Node</title>
-      </head>
-      <body>${message}</body>
-    </html>`.trim();
+const app = express();
+app.use(express.json());
 
-  res.statusCode = statusCode;
-  res.writeHead(statusCode, {
-    'Content-Type': `text/html; charset=UTF-8`,
-  });
+app.get(`/posts`, async (req, res) => {
+  const fileContent = await fs.readFile(FILE_NAME);
+  const mocks = JSON.parse(fileContent);
 
-  res.end(template);
-};
-
-const onClientConnect = async (req, res) => {
-  switch (req.url) {
-    case `/`:
-      try {
-        const fileContent = await fs.readFile(FILE_NAME);
-        const mocks = JSON.parse(fileContent);
-        const message = mocks.map((post) => `<li>${post.title}</li>`).join(``);
-        sendResponse(res, HttpCode.OK, `<ul>${message}</ul>`);
-      } catch (err) {
-        sendResponse(res, HttpCode.NOT_FOUND, NOT_FOUND);
-      }
-
-      break;
-    default:
-      sendResponse(res, HttpCode.NOT_FOUND, NOT_FOUND);
-      break;
-  }
-};
+  res.send(mocks);
+});
 
 module.exports = {
   name: `--server`,
-  run(args) {
+  async run(args) {
     const [customPort] = args;
     const port = Number.parseInt(customPort, 10) || DEFAULT_PORT;
 
-    http.createServer(onClientConnect)
-      .listen(port)
-      .on(`listening`, (err) => {
+    try {
+      app.listen(port, (err) => {
         if (err) {
-          return console.error(`Ошибка при создании сервера`, err);
+          return console.log(`Произошла ошибка: ${err.message}`);
         }
 
-        return console.info(chalk.green(`Ожидаю соединений на ${port}`));
+        return console.log(`Сервер запущен на порту: ${port}`);
       });
+
+    } catch (err) {
+      console.log(`Произошла ошибка: ${err.message}`);
+      process.exit(1);
+    }
   }
 };
