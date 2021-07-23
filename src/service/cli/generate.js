@@ -1,9 +1,10 @@
 'use strict';
 
-const {FILE_NAME, FILE_SENTENCES_PATH, FILE_TITLES_PATH, FILE_CATEGORIES_PATH, DEFAULT_COUNT} = require(`../../constants`);
+const {FILE_NAME, FILE_SENTENCES_PATH, FILE_TITLES_PATH, FILE_CATEGORIES_PATH, FILE_COMMENTS_PATH, DEFAULT_COUNT} = require(`../../constants`);
 const {getRandomInt, shuffle} = require(`../../utils`);
 const chalk = require(`chalk`);
 const fs = require(`fs`).promises;
+const {nanoid} = require(`nanoid`);
 
 const readContent = async (filePath) => {
   try {
@@ -15,13 +16,18 @@ const readContent = async (filePath) => {
   }
 };
 
-const generateOffers = (count, titles, categories, sentences) => (
+const generateOffers = (count, titles, categories, sentences, comments) => (
   Array(count).fill({}).map(() => ({
     title: titles[getRandomInt(0, titles.length - 1)],
     announce: shuffle(sentences).slice(1, 5).join(` `),
     fullText: shuffle(sentences).slice(1, getRandomInt(2, 10)).join(` `),
     createdDate: new Date(),
     category: [categories[getRandomInt(0, categories.length - 1)]],
+    id: nanoid(),
+    comments: shuffle(comments).slice(1, getRandomInt(2, 5)).map((text) => ({
+      id: nanoid(),
+      text,
+    }))
   }))
 );
 
@@ -31,10 +37,11 @@ module.exports = {
     const sentences = await readContent(FILE_SENTENCES_PATH);
     const titles = await readContent(FILE_TITLES_PATH);
     const categories = await readContent(FILE_CATEGORIES_PATH);
+    const comments = await readContent(FILE_COMMENTS_PATH);
 
     const [count] = args;
     const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
-    const content = JSON.stringify(generateOffers(countOffer, titles, categories, sentences));
+    const content = JSON.stringify(generateOffers(countOffer, titles, categories, sentences, comments));
 
     try {
       await fs.writeFile(FILE_NAME, content);
