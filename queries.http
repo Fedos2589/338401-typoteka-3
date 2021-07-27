@@ -1,0 +1,57 @@
+GET http://localhost:3000/api/articles
+
+###
+
+GET http://localhost:3000/api/articles/sdziY3YYdq25E1-B7gebT
+
+###
+
+GET http://localhost:3000/api/categories
+
+###
+
+POST http://localhost:3000/api/articles
+Content-Type: application/json
+
+{
+  "title": "new post 1 new post 1 new post 1 new post 1 new post 1 new post 1 new post 1 new post 1 new post 1 ",
+  "image": "image.png",
+  "createdDate": "2021-07-19T13:42:40.784Z",
+  "category": ["Деревья"],
+  "announce": "new post 1 new post 1 new post 1 new post 1 new post 1 new post 1 new post 1 new post 1 new post 1 ",
+  "fullText": "new post"
+}
+
+###
+
+PUT http://localhost:3000/api/articles/sdziY3YYdq25E1-B7gebT
+Content-Type: application/json
+
+{
+  "title": "ksfjvkjv ksfjvkjv ksfjvkjvvмv ksfjvkjvksfjvkjvksfjvkjvksfjvkjv ksfjvkjv ksfjvkjvksfjvkjvksfjvkjv   иksfjvkjvksfjvkjv v ksfjvkjv"
+}
+
+###
+
+DELETE http://localhost:3000/api/articles/zHN1eqzlKQsIuUo4ey9_x
+
+###
+
+GET http://localhost:3000/api/articles/sdziY3YYdq25E1-B7gebT/comments
+
+###
+
+DELETE http://localhost:3000/api/articles/sdziY3YYdq25E1-B7gebT/comments/t5tFCjqCZJY9QKljfVbDU
+
+###
+
+POST http://localhost:3000/api/articles/sdziY3YYdq25E1-B7gebT/comments
+Content-Type: application/json
+
+{
+  "text": "edbnvdflknvfkn edbnvdflknvfknedbnvdflknvfkn edbnvdflknvfkn edbnvdflknvfkn v v edbnvdflknvfkn edbnvdflknvfknedbnvdflknvfkn"
+}
+
+###
+
+GET http://localhost:3000/api/search?query=перестать

@@ -4,6 +4,7 @@ const FILE_NAME = `mocks.json`;
 const FILE_SENTENCES_PATH = `src/data/sentences.txt`;
 const FILE_TITLES_PATH = `src/data/titles.txt`;
 const FILE_CATEGORIES_PATH = `src/data/categories.txt`;
+const FILE_COMMENTS_PATH = `src/data/comments.txt`;
 const DEFAULT_COUNT = 1;
 const DEFAULT_PORT = 3000;
 const DEFAULT_COMMAND = `--help`;
@@ -27,6 +28,7 @@ const HttpCode = {
   INTERNAL_SERVER_ERROR: 500,
   FORBIDDEN: 403,
   UNAUTHORIZED: 401,
+  BAD_REQUEST: 400
 };
 
 const THEMES = [{
@@ -137,6 +139,7 @@ module.exports = {
   FILE_SENTENCES_PATH,
   FILE_TITLES_PATH,
   FILE_CATEGORIES_PATH,
+  FILE_COMMENTS_PATH,
   DEFAULT_COUNT,
   DEFAULT_PORT,
   DEFAULT_COMMAND,

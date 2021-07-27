@@ -15,8 +15,11 @@ const shuffle = (someArray) => {
   return someArray;
 };
 
+const getArticle = (articles, id) => articles.find((article) => article.id === id);
+
 module.exports = {
   getRandomInt,
   shuffle,
+  getArticle,
 };
 

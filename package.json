@@ -4,12 +4,13 @@
   "description": "Типотека",
   "main": "./src/service/service.js",
   "scripts": {
-    "test": "npm run eslint",
+    "test": "jest",
     "eslint": "eslint --ext .js src/",
     "start": "node ./src/service/service.js",
     "start.dev": "nodemon ./src/main.js",
-    "start-front-server": "node ./src/express/express.js",
-    "start-service": "nodemon ./src/service/service.js"
+    "start-front-server": "nodemon ./src/express/express.js",
+    "start-service": "DEBUG=express:* nodemon ./src/service/cli/server.js",
+    "debug": "LOG_LEVEL=debug nodemon ./src/service/cli/server.js | ./node_modules/.bin/pino-pretty"
   },
   "repository": {
     "type": "git",
@@ -25,11 +26,15 @@
     "eslint": "7.24.0",
     "eslint-config-htmlacademy": "0.6.0",
     "nodemon": "2.0.7",
+    "pino-pretty": "5.1.0",
     "pug-lint": "2.6.0"
   },
   "dependencies": {
     "chalk": "4.1.1",
     "express": "4.17.1",
-    "pug": "2.0.4"
+    "express-pino-logger": "6.0.0",
+    "nanoid": "^3.1.23",
+    "pino": "6.11.3",
+    "pug": "^3.0.2"
   }
 }
