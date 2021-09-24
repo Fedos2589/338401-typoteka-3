@@ -2,7 +2,7 @@ GET http://localhost:3000/api/articles
 
 ###
 
-GET http://localhost:3000/api/articles/sdziY3YYdq25E1-B7gebT
+GET http://localhost:3000/api/articles/4uSmm9uF9PHoElJYJjXxL
 
 ###
 
@@ -17,14 +17,14 @@ Content-Type: application/json
   "title": "new post 1 new post 1 new post 1 new post 1 new post 1 new post 1 new post 1 new post 1 new post 1 ",
   "image": "image.png",
   "createdDate": "2021-07-19T13:42:40.784Z",
-  "category": ["Деревья"],
+  "category": ["Деревья", "sdf"],
   "announce": "new post 1 new post 1 new post 1 new post 1 new post 1 new post 1 new post 1 new post 1 new post 1 ",
   "fullText": "new post"
 }
 
 ###
 
-PUT http://localhost:3000/api/articles/sdziY3YYdq25E1-B7gebT
+PUT http://localhost:3000/api/articles/zHN1eqzlKQsIuUo4ey9_x
 Content-Type: application/json
 
 {
@@ -33,7 +33,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/articles/zHN1eqzlKQsIuUo4ey9_x
+DELETE http://localhost:3000/api/articles/XSGXUNY1v_-wKYV5ssWeY
 
 ###
 
@@ -45,7 +45,7 @@ DELETE http://localhost:3000/api/articles/sdziY3YYdq25E1-B7gebT/comments/t5tFCjq
 
 ###
 
-POST http://localhost:3000/api/articles/sdziY3YYdq25E1-B7gebT/comments
+POST http://localhost:3000/api/articles/zHN1eqzlKQsIuUo4ey9_x/comments
 Content-Type: application/json
 
 {
