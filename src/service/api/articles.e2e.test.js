@@ -9,27 +9,6 @@ const DataService = require(`../data-service/articles`);
 const {HttpCode} = require(`../../constants`);
 const CommentService = require(`../data-service/comments`);
 
-// const mockCategories = [
-//   `Деревья`,
-//   `Кино`,
-//   `IT`
-// ];
-
-// const mockUsers = [
-//   {
-//     name: `Иван Иванов`,
-//     email: `ivanov@example.com`,
-//     passwordHash: passwordUtils.hashSync(`ivanov`),
-//     avatar: `avatar01.jpg`
-//   },
-//   {
-//     name: `Пётр Петров`,
-//     email: `petrov@example.com`,
-//     passwordHash: passwordUtils.hashSync(`petrov`),
-//     avatar: `avatar02.jpg`
-//   }
-// ];
-
 const mockArticles = [
   {
     "title": `Как собрать камни бесконечности`,
@@ -283,7 +262,7 @@ describe(`API correctly deletes an article`, () => {
 
   test(`Article count is 4 now`, () => request(app)
     .get(`/articles`)
-    .expect((res) => expect(res.body.length).toBe(4))
+    .expect((res) => expect(res.body.length).toBe(3))
   );
 });
 

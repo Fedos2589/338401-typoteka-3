@@ -8,27 +8,6 @@ const DataService = require(`../data-service/categories`);
 
 const {HttpCode} = require(`../../constants`);
 
-// const mockCategories = [
-//   `Деревья`,
-//   `Кино`,
-//   `IT`
-// ];
-
-// const mockUsers = [
-//   {
-//     name: `Иван Иванов`,
-//     email: `ivanov@example.com`,
-//     passwordHash: passwordUtils.hashSync(`ivanov`),
-//     avatar: `avatar01.jpg`
-//   },
-//   {
-//     name: `Пётр Петров`,
-//     email: `petrov@example.com`,
-//     passwordHash: passwordUtils.hashSync(`petrov`),
-//     avatar: `avatar02.jpg`
-//   }
-// ];
-
 const mockArticles = [
   {
     "title": `Как собрать камни бесконечности`,

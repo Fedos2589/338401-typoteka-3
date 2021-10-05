@@ -12,12 +12,7 @@ const {
 } = require(`../data-service`);
 const getMockData = require(`../lib/getMocksData`);
 
-// const sequelize = require(`../lib/sequelize`);
-// const defineModels = require(`../models`);
-
 const app = new Router();
-
-// defineModels(sequelize);
 
 (async () => {
   const mocks = await getMockData();

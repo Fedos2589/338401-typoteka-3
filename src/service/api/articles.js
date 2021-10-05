@@ -2,15 +2,15 @@
 
 const {Router} = require(`express`);
 const {HttpCode} = require(`../../constants`);
-const articleExists = require(`../middlewares/articleExists`);
-const articleValidator = require(`../middlewares/articleValidator`);
-const commentExists = require(`../middlewares/commentExists`);
-const commentValidator = require(`../middlewares/commentValidator`);
-const routeParamsValidator = require(`../middlewares/routeParamsValidator`);
-
-const router = new Router();
+const articleExists = require(`../middlewares/article-exists`);
+const articleValidator = require(`../middlewares/article-validator`);
+const commentExists = require(`../middlewares/comment-exists`);
+const commentValidator = require(`../middlewares/comment-validator`);
+const routeParamsValidator = require(`../middlewares/route-params-validator`);
 
 module.exports = (app, articleService, commentService) => {
+  const router = new Router();
+
   app.use(`/articles`, router);
 
   router.get(`/`, async (req, res) => {
