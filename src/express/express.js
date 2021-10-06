@@ -1,12 +1,12 @@
 "use strict";
 const express = require(`express`);
 const path = require(`path`);
-const articlesRouter = require(`./router/articlesRouter`);
-const categoriesRouter = require(`./router/categoriesRouter`);
-const loginRouter = require(`./router/loginRouter`);
-const myRouter = require(`./router/myRouter`);
-const registerRouter = require(`./router/registerRouter`);
-const searchRouter = require(`./router/searchRouter`);
+const articlesRouter = require(`./router/articles-router`);
+const categoriesRouter = require(`./router/categories-router`);
+const loginRouter = require(`./router/login-router`);
+const myRouter = require(`./router/my-router`);
+const registerRouter = require(`./router/register-router`);
+const searchRouter = require(`./router/search-router`);
 const {THEMES, HOTLIST, COMMENTS, PREVIEWS} = require(`../constants`);
 const port = 8080;
 const app = express();
